@@ -1,0 +1,103 @@
+{% extends "home\basic.html" %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block css %}
+body{ background-color: #FDD4CE;}
+.apple{
+  background-color:#DB8F8D;
+}
+.pear{
+  background-color:#DB8F8D;
+}
+.mango{
+  background-color:#917D85;
+}
+{% endblock css %}
+
+{% block body %}
+
+{% if messages %}
+<ul class="messages list-unstyled">
+    {% for message in messages %}
+    <li {% if message.tags %}>
+
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong> {{ message }} </strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+{% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<main role="main">
+
+
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+      </br>
+      <img class="d-block mx-auto mb-4" src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cmVhY3R8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
+            alt="" width="100%" height="400">
+        <h3> 
+
+          {% if user.is_authenticated  %}
+        Welcome {{request.user.first_name}}
+          {% endif %}
+          </h3>
+<h1 class="display-3"> 
+ Code Simplified
+        </h1>
+        
+        <p> </p>
+    
+
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4 apple">
+        <center>
+        </br>
+         <i class="fas fa-graduation-cap  fa-3x"></i>
+          <h3>Scholarship facility</h3>
+          <p>Free scholarships available for all the students. </p>
+          </center>
+        </div>
+        <div class="col-md-4 mango">
+        <center>
+        </br>
+        <i class="fas fa-trophy fa-3x"></i>
+          <h3>Top courses</h3>
+          <p>Learn new topics as we provide you with best courses for easy learning. </p>
+          </center>
+        </div>
+        <div class="col-md-4 pear">
+        <center>
+        </br>
+        <i class="fas fa-book fa-3x"></i>
+          <h3>E-books available</h3>
+          <p>Online learning made simple by educational E-books for students.</p>
+         </center>
+        </div>
+      </div>
+
+      <hr>
+
+    </div> <!-- /container -->
+
+  </main>
+
+  <footer class="container">
+    <p>&copy; codesimplified 2021</p>
+  </footer>
+
+
+{% endblock body %}
